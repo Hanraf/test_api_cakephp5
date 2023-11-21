@@ -21,10 +21,10 @@ class RaihanPengeluaranpribadiController extends AppController
      */
     public function initialize(): void{
         parent::initialize();
+	$this->autoRender = false;
     }
     public function index()
-    {
-        $this->autoRender = false;
+    {     
         $parameter = $this->request->getQuery();
         $Model = $this->getTableLocator()->get("RaihanPengeluaranpribadi");
 
