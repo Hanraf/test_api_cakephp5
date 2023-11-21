@@ -21,7 +21,7 @@ class RaihanPengeluaranpribadiController extends AppController
      */
     public function initialize(): void{
         parent::initialize();
-	$this->autoRender = false;
+        $this->autoRender = false;
     }
     public function index()
     {     
