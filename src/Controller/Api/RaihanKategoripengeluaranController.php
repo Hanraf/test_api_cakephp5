@@ -18,27 +18,25 @@ class RaihanKategoripengeluaranController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
-    public function viewClasses(): array
-    {
-        return [JsonView::class];
+    public function initialize(): void{
+        parent::initialize();
+        $this->autoRender = false;
     }
     public function index()
     {
-        $this->autoRender = false;
         $parameter = $this->request->getQuery();
         $Model = $this->getTableLocator()->get("RaihanKategoripengeluaran");
 
         if(!empty($parameter)) $data = $Model->find()->where($parameter)->toArray();
         else $data = $Model->find()->toArray();
 
-        $this->response = $this->response->withType('application/json')
+        return $this->response->withType('application/json')
         ->withStringBody(json_encode([
             'status' => true,
             'parameter' => $parameter,
             'message' => 'Data berhasil diambil',
             'data' => $data
         ]));
-        return $this->response;
     }
 
     /**

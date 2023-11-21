@@ -31,14 +31,13 @@ class RaihanPengeluaranpribadiController extends AppController
         if(!empty($parameter)) $data = $Model->find()->where($parameter)->toArray();
         else $data = $Model->find()->toArray();
 
-        $this->response = $this->response->withType('application/json')
+        return $this->response->withType('application/json')
         ->withStringBody(json_encode([
             'status' => true,
             'parameter' => $parameter,
             'message' => 'Data berhasil diambil',
             'data' => $data
         ]));
-        return $this->response;
     }
 
     // /**
